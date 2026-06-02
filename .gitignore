@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+
+.venv/
+venv/
+
+reports/*.pdf
+reports/*.xlsx
+
+.env
+
+.streamlit/secrets.toml
+
+.idea/
+.vscode/
+
+.DS_Store

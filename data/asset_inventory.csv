@@ -1,0 +1,21 @@
+Asset Name,Manual_IP_Address,Application/Tool Name,Operating System,VLAN ID,Server Category,Server Type,Severity(CIA)
+corebank-app01,10.120.10.10,Core Banking,AIX,VLAN100,APP,PROD,High
+corebank-db01,10.120.10.20,Core Banking,Oracle Linux,VLAN100,DB,PROD,High
+mobilebank-app01,10.120.20.10,Mobile Banking,RHEL,VLAN110,APP,PROD,High
+mobilebank-db01,10.120.20.20,Mobile Banking,RHEL,VLAN110,DB,PROD,High
+internetbank-web01,10.120.30.10,Internet Banking,Windows,VLAN120,WEB,PROD,High
+internetbank-app01,10.120.30.20,Internet Banking,RHEL,VLAN120,APP,PROD,High
+swift-app01,10.120.40.10,SWIFT,AIX,VLAN130,APP,PROD,High
+swift-db01,10.120.40.20,SWIFT,Oracle Linux,VLAN130,DB,PROD,High
+hr-app01,10.120.50.10,HR Portal,Windows,VLAN140,APP,PROD,Medium
+hr-db01,10.120.50.20,HR Portal,Windows,VLAN140,DB,PROD,Medium
+email-app01,10.120.60.10,Email Service,Windows,VLAN150,APP,PROD,Medium
+backup-srv01,10.120.70.10,Backup System,RHEL,VLAN160,APP,PROD,High
+siem01,10.120.80.10,SIEM,RHEL,VLAN170,APP,PROD,High
+jumpserver01,10.120.90.10,Jump Server,RHEL,VLAN180,APP,PROD,High
+uat-corebank01,10.130.10.10,Core Banking,AIX,VLAN200,APP,UAT,High
+uat-mobilebank01,10.130.20.10,Mobile Banking,RHEL,VLAN210,APP,UAT,Medium
+uat-internetbank01,10.130.30.10,Internet Banking,Windows,VLAN220,WEB,UAT,Medium
+sit-corebank01,10.140.10.10,Core Banking,AIX,VLAN300,APP,SIT,Medium
+sit-mobilebank01,10.140.20.10,Mobile Banking,RHEL,VLAN310,APP,SIT,Low
+sit-internetbank01,10.140.30.10,Internet Banking,Windows,VLAN320,WEB,SIT,Low

@@ -1,0 +1,21 @@
+Asset Name,Manual_IP_Address,Vulnerability(CVE),Priority
+corebank-app01,10.120.10.10,CVE-2025-1001,Critical
+corebank-db01,10.120.10.20,CVE-2025-1002,Critical
+mobilebank-app01,10.120.20.10,CVE-2025-1003,High
+mobilebank-db01,10.120.20.20,CVE-2025-1004,Critical
+internetbank-web01,10.120.30.10,CVE-2025-1005,Critical
+internetbank-app01,10.120.30.20,CVE-2025-1006,High
+swift-app01,10.120.40.10,CVE-2025-1007,Critical
+swift-db01,10.120.40.20,CVE-2025-1008,Critical
+hr-app01,10.120.50.10,CVE-2025-1009,Medium
+hr-db01,10.120.50.20,CVE-2025-1010,Medium
+email-app01,10.120.60.10,CVE-2025-1011,High
+backup-srv01,10.120.70.10,CVE-2025-1012,Critical
+siem01,10.120.80.10,CVE-2025-1013,High
+jumpserver01,10.120.90.10,CVE-2025-1014,Critical
+uat-corebank01,10.130.10.10,CVE-2025-1015,High
+uat-mobilebank01,10.130.20.10,CVE-2025-1016,Medium
+uat-internetbank01,10.130.30.10,CVE-2025-1017,Medium
+sit-corebank01,10.140.10.10,CVE-2025-1018,Medium
+sit-mobilebank01,10.140.20.10,CVE-2025-1019,Low
+sit-internetbank01,10.140.30.10,CVE-2025-1020,Low
