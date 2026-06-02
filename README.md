@@ -1,436 +1,208 @@
-# Patch Prioritization Engine
+# AI-Assisted Patch Prioritization Engine
 
-## Overview
+A security-focused exposure management and patch prioritization platform that combines vulnerability severity, asset criticality, exposure context, environment classification, and business impact to identify the most important systems to patch first.
 
-The Patch Prioritization Engine is a risk-based vulnerability management solution that helps security teams determine which assets should be patched first and why.
-
-Unlike traditional vulnerability management approaches that focus only on vulnerability severity, this project combines:
-
-- Asset Inventory Data
-- Vulnerability Findings
-- Firewall Exposure Analysis
-- Environment Context
-- CIA Classification
-- Deterministic Risk Scoring
-- AI-Powered Explanations (Ollama + Phi3)
-
-to produce an explainable and auditable patch prioritization process.
+The platform uses a deterministic rule-based scoring engine for risk calculations and a local LLM (Ollama + Phi3) for executive summaries, technical analysis, and remediation guidance.
 
 ---
 
-## Problem Statement
+## Project Overview
 
-Security teams often face thousands of vulnerabilities across hundreds or thousands of assets.
+Traditional vulnerability management platforms often prioritize vulnerabilities solely based on CVSS scores.
 
-Traditional approaches typically prioritize:
-
-- CVSS Score
-- Vulnerability Severity
-
-This often results in poor prioritization because business context and exposure are ignored.
-
-Example:
-
-Asset A
-- Critical CVE
-- Production Core Banking System
-- Internet Facing
-
-Asset B
-- Critical CVE
-- SIT Test Server
-- No External Exposure
-
-Both vulnerabilities may have the same severity, but Asset A presents significantly higher business risk.
-
-This project addresses that challenge using deterministic risk scoring and contextual analysis.
-
----
-
-## Key Features
-
-### Asset Correlation
-
-Combines:
-
-- Asset Inventory
-- Vulnerability Findings
-- Firewall Rules
-
-into a single asset context.
-
----
-
-### Exposure Analysis
-
-Analyzes firewall rules to identify:
-
-- Number of connections
-- Internet-facing systems
-- Exposure score
-
----
-
-### Risk-Based Scoring
-
-Calculates risk scores using:
+This project demonstrates a more realistic enterprise approach by considering:
 
 - Vulnerability Severity
-- CIA Classification
-- Environment
-- Server Category
-- Network Exposure
+- Asset Criticality
+- Exposure Level
+- Environment Type
+- CIA Impact
+- Business Context
+- Patch Prioritization Logic
 
----
+The output helps both technical teams and management understand:
 
-### Patch Prioritization
+- What should be patched first
+- Why it is important
+- Potential business impact
+- Recommended remediation actions
 
-Generates:
+## Architecture
 
-- Priority Ranking
-- Risk Score
-- Risk Breakdown
+CSV Data Sources
+        │
+        ▼
+Data Ingestion Layer
+        │
+        ▼
+Asset Correlation Engine
+        │
+        ▼
+Risk Scoring Engine
+        │
+        ▼
+Patch Prioritization
+        │
+        ▼
+AI Analysis Layer (Phi3)
+        │
+        ▼
+Reporting & Dashboard
 
-for every vulnerable asset.
 
----
+## Features
 
-### Explainable Scoring
+### Risk-Based Patch Prioritization
 
-Every score includes a full breakdown.
-
-Example:
-
-```text
-Risk Score: 145
-
-Breakdown
-
-Vulnerability      40
-CIA                30
-Environment        20
-Server Category    20
-Exposure           35
-```
-
----
+- CVSS-Based Scoring
+- Exposure-Aware Scoring
+- Asset Criticality Evaluation
+- Environment Weighting
+- CIA Impact Assessment
 
 ### AI-Assisted Analysis
 
-Uses:
-
-- Ollama
-- Phi3
-
-to generate:
-
-- Executive Summary
-- Technical Analysis
-- Business Impact
-- Remediation Guidance
-
-AI explains the risk.
-
-AI does not calculate the risk.
-
----
-
-### Dashboard
-
-Interactive Streamlit dashboard providing:
-
-- Executive Metrics
-- Top Patch Priorities
-- Asset Details
-- Risk Breakdown
-- Risk Distribution
-- Application Risk Ranking
-- AI Analysis
-
----
+- Executive Risk Summary
+- Technical Risk Analysis
+- Business Impact Assessment
+- Remediation Recommendations
 
 ### Reporting
 
-Generate:
+- Interactive Streamlit Dashboard
+- Excel Report Export
+- PDF Report Export
 
-#### Excel Report
+### Explainable Risk Scoring
 
-Includes:
+Every finding includes:
 
-- Executive Summary
-- Patch Priorities
-- Technical Findings
+- Risk Score
 - Risk Breakdown
+- Business Impact
+- AI Explanation
 
-#### PDF Executive Report
+## Screenshots
 
-Includes:
+### Executive Summary
 
-- Executive Summary
-- Top 10 Patch Priorities
-- Risk Breakdown Summary
-- Top 5 Detailed Findings
+![Executive Summary](screenshots/Executive-summary.png)
 
----
-
-# Architecture
-
-```text
-Asset Inventory
-       +
-Vulnerability Data
-       +
-Firewall Rules
-       |
-       v
-Data Ingestion
-       |
-       v
-Correlation Engine
-       |
-       v
-Exposure Analysis
-       |
-       v
-Risk Scoring Engine
-       |
-       v
-Patch Prioritization
-       |
-       +-------> Excel Reporting
-       |
-       +-------> PDF Reporting
-       |
-       +-------> Streamlit Dashboard
-       |
-       +-------> AI Explanation (Phi3)
-```
+Provides a management-level overview of overall risk posture, critical findings, and patching priorities.
 
 ---
 
-# Project Structure
+### Streamlit Dashboard
 
-```text
+![Dashboard](screenshots/Streamlit-Dashboard-1.png)
+
+Main dashboard showing risk metrics and prioritized findings.
+
+---
+
+### Risk Analysis Dashboard
+
+![Risk Analysis](screenshots/AI-Risk-Analysis%20(Dashboard).png)
+
+Detailed AI-generated risk analysis and recommendations.
+
+---
+
+### Asset Analysis
+
+![Asset Analysis](screenshots/Sample-asset.png)
+
+Individual asset risk evaluation with score breakdown.
+
+---
+
+### AI Analysis
+
+![AI Analysis](screenshots/AI-analysis.png)
+
+AI-generated executive and technical assessment.
+
+---
+
+### Summary Output
+
+![Summary](screenshots/Summary-output_1.png)
+
+Executive reporting output generated by the AI layer.
+
+## Project Structure
+
 patch-prioritization-engine/
-
+│
 ├── ai/
-│   ├── ai_analysis.py
-│   ├── ollama_client.py
-│   └── prompt_builder.py
-│
 ├── correlation/
-│   ├── asset_context.py
-│   ├── attack_path_analysis.py
-│   └── exposure_analysis.py
-│
 ├── dashboard/
-│   └── app.py
-│
 ├── data/
-│   ├── asset_inventory.csv
-│   ├── firewall_rules.csv
-│   └── vulnerabilities.csv
-│
 ├── ingestion/
-│   ├── asset_loader.py
-│   ├── firewall_loader.py
-│   └── vulnerability_loader.py
-│
 ├── prioritization/
-│   └── patch_prioritizer.py
-│
 ├── reporting/
-│   ├── excel_export.py
-│   ├── executive_report.py
-│   ├── pdf_export.py
-│   └── technical_report.py
-│
 ├── scoring/
-│   ├── risk_engine.py
-│   └── scoring_weights.py
 │
-|── screenshots/
-|
 ├── reports/
+├── screenshots/
 │
 ├── main.py
 ├── requirements.txt
 └── README.md
-```
 
----
+## Risk Scoring Methodology
 
-# Data Sources
+Risk scores are calculated using a deterministic scoring model.
 
-## Asset Inventory
+Factors include:
 
-Example Fields:
-
-```text
-Asset Name
-IP Address
-Application
-Operating System
-VLAN
-Server Category
-Server Type
-CIA Severity
-```
-
----
-
-## Vulnerability Findings
-
-Example Fields:
-
-```text
-Asset Name
-IP Address
-CVE
-Priority
-```
-
----
-
-## Firewall Rules
-
-Example Fields:
-
-```text
-Source
-Destination
-Service
-```
-
----
-
-# Risk Scoring Methodology
-
-Risk score is calculated using:
-
-| Factor | Example Weight |
+| Factor | Weight |
 |----------|----------|
 | Vulnerability Severity | 40 |
-| CIA Severity | 30 |
-| Environment | 20 |
-| Server Category | 25 |
-| Exposure | 35 |
+| Exposure Level | 25 |
+| Asset Criticality | 20 |
+| Environment Type | 15 |
 
-Example:
+Final Risk Score = Sum of all contributing factors.
 
-```text
-Critical Vulnerability      40
-High CIA                    30
-Production Environment      20
-Application Server          20
-Exposure Score              35
+This ensures prioritization remains auditable and explainable.
 
-Total Risk Score = 145
-```
+## Example Risk Finding
 
----
+Asset: WEB-PROD-01
 
-# Installation
+Risk Score: 92
 
-Clone repository:
+Factors:
 
-```bash
-git clone https://github.com/manojselvang/patch-prioritization-engine.git
+- Critical Vulnerability
+- Internet Facing
+- Production Environment
+- High CIA Impact
 
-cd patch-prioritization-engine
-```
+Recommendation:
 
-Install dependencies:
+Immediate patch deployment recommended.
 
-```bash
-pip install -r requirements.txt
-```
-
----
-
-# Run Dashboard
-
-```bash
-streamlit run dashboard/app.py
-```
-
----
-
-# Generate Excel Report
-
-```bash
-python -m reporting.excel_export
-```
-
-Output:
-
-```text
-reports/patch_prioritization_report.xlsx
-```
-
----
-
-# Generate PDF Report
-
-```bash
-python -m reporting.pdf_export
-```
-
-Output:
-
-```text
-reports/executive_report.pdf
-```
-
----
-
-# Run Complete Workflow
-
-```bash
-python main.py
-```
-
----
-
-# Technology Stack
+## Technologies
 
 - Python
-- Pandas
 - Streamlit
-- ReportLab
+- Pandas
 - OpenPyXL
+- ReportLab
 - Ollama
 - Phi3
 
----
+## Security Engineering Use Case
 
-# Design Principles
+This project demonstrates how enterprise security teams can move beyond CVSS-only prioritization by incorporating asset context, exposure data, and business impact into patch management decisions.
 
-- Deterministic risk scoring
-- Explainable prioritization
-- Risk-driven patch management
-- AI used only for explanation
-- Auditable scoring model
-- Modular architecture
+The architecture follows modern Exposure Management principles and provides explainable, auditable risk prioritization suitable for security operations and vulnerability management programs.
 
----
-
-# Future Enhancements
-
-- CVSS Integration
-- KEV (Known Exploited Vulnerabilities)
-- EPSS Scoring
-- Asset Relationship Graphs
-- Attack Path Visualization
-- Historical Trending
-- Automated Ticket Creation
-- ServiceNow Integration
-- Tenable Integration
-- Vulnerability Scanner Connectors
-- Executive Dashboard Enhancements
-
----
-
-# Author
+## Author
 
 Manoj Selvan G
+manojselvang@gmail.com
+github.com/manojselvang
+https://www.linkedin.com/in/manojselvang/
