@@ -29,7 +29,7 @@ The output helps both technical teams and management understand:
 
 ## Architecture
 
-!(screenshots/architecture.png)
+![architecture](screenshots/architecture.png)
 
 
 ---
