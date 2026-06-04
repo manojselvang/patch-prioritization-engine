@@ -29,37 +29,8 @@ The output helps both technical teams and management understand:
 
 ## Architecture
 
+!(screenshots/architecture.png)
 
-```text
-Asset Inventory
-       +
-Vulnerability Data
-       +
-Firewall Rules
-       |
-       v
-Data Ingestion
-       |
-       v
-Correlation Engine
-       |
-       v
-Exposure Analysis
-       |
-       v
-Risk Scoring Engine
-       |
-       v
-Patch Prioritization
-       |
-       +-------> Excel Reporting
-       |
-       +-------> PDF Reporting
-       |
-       +-------> Streamlit Dashboard
-       |
-       +-------> AI Explanation (Phi3)
-```
 
 ---
 
